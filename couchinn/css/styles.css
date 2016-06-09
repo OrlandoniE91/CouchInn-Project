@@ -1,0 +1,31 @@
+body{
+	background-image: url(../img/water-texture.jpg);
+}
+
+.main{
+	background-color: #ccd9ff;
+	padding-top: 50px;
+	min-height: 100vh;
+}
+
+.main table{
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+
+.navbar{
+	margin-bottom: 0px;
+}
+
+.box{
+	background-color: white;
+	text-align: center;
+	border: 1px solid #4d79ff;
+	margin-bottom: 30px;
+}
+
+.box img{
+	padding-top: 15px; 
+	margin: 0 auto;
+	max-height: 144px;
+}
