@@ -21,11 +21,60 @@ body{
 	background-color: white;
 	text-align: center;
 	border: 1px solid #4d79ff;
-	margin-bottom: 30px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	margin-top: 10px;
 }
 
 .box img{
-	padding-top: 15px; 
+	padding-top: 15px;
+	padding-bottom: 15px; 
 	margin: 0 auto;
 	max-height: 144px;
+	display: inline-block;
+}
+
+.paginacion{
+	text-align: center;
+}
+
+.tablaPerfil, .tablaPost{
+	width: 50%;
+	background-color: white;
+}
+
+.tablaSolicitud{
+	background-color: white;
+}
+
+.tablaSolicitud th, td{
+	text-align: center;
+}
+
+.post{
+	border: 1px solid black;
+}
+.post img{
+	padding: 5px;
+	display: inline-block;
+}
+
+.filtro{
+	display:none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 25px;
+	background-color: #668cff;
+}
+
+.resultadoF{
+	border-radius: 25px;
+	background-color: white;
+	padding: 5px;
+	width:300px;
+	margin: 0 auto;
+	text-align: center;
+	border:1px solid black;
 }

@@ -33,6 +33,7 @@
 								if ($premium == 0){?>
 								<li><a type="button" class="btn btn-danger" href="premiumForm.php" style="color:white">¡Hazte Premium!</a></li>
 								<?php } ?>
+								<li><a type="button" class="btn btn-primary" href="altaHospedaje.php" style="color:white">¡Publica!</a></li>
 								<li><a href="perfil.php">Mi perfil: <?php echo $_SESSION['usuario'] ?></a></li>
 								<li><a href="logOff.php" onclick="return confirm('¿Salir?')">Cerrar Sesión</a></li>
 								<?php } ?>		

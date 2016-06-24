@@ -12,7 +12,7 @@ if (isset($_POST['altaTipo'])){
  if($consultaTipos==0){
    mysqli_query($database,"INSERT INTO tipohospedaje  VALUES (NULL, '$bar', '$descripcion', 1);");
    echo '<script> alert("Se dio de alta un nuevo tipo");
-   window.location.href="formAgregarTipo.php";</script>';
+   window.location.href="altaHospedaje.php";</script>';
  }
  else{
   echo '<script> alert("Ya existe un tipo de alojamiento con ese nombre");

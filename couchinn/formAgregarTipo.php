@@ -32,7 +32,7 @@
 			<div class="form-group">
 				<div class="col-md-2 col-md-offset-2">
 					<button type="submit" class="btn btn-primary" name="altaTipo">Agregar</button>
-					<a href="index.php" class="btn btn-warning" role="button">Volver</a>
+					<a href="altaHospedaje.php" class="btn btn-warning" role="button">Volver</a>
 				</div>
 			</div>
 		</form>	</div>
