@@ -47,7 +47,4 @@
 		mysqli_close($db);
 
 	 header("location:perfil.php");
-	
-
-
 ?>

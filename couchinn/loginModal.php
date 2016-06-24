@@ -20,10 +20,10 @@
 								<a href="recuperar.php">¿Olvidó su contraseña?</a>
 							</div>
 						</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-primary">Aceptar</button>
-					</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-primary">Aceptar</button>
+						</div>
 					</form>
 				</div>
 			</div>
