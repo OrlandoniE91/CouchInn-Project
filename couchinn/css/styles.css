@@ -1,9 +1,12 @@
 body{
 	background-image: url(../img/water-texture.jpg);
+	background-attachment: fixed;
+	background-repeat: repeat;
+	margin-top: 50px;
 }
 
 .main{
-	background-color: #ccd9ff;
+	background-color: rgba(4, 202, 213, 0.85);
 	padding-top: 50px;
 	min-height: 100vh;
 }
@@ -43,11 +46,11 @@ body{
 	background-color: white;
 }
 
-.tablaSolicitud{
+.tablaSolicitud, .tablaCalificacion{
 	background-color: white;
 }
 
-.tablaSolicitud th, td{
+.tablaSolicitud th, td, .tablaCalificacion th, td{
 	text-align: center;
 }
 
@@ -60,7 +63,19 @@ body{
 }
 
 .filtro{
+	width: 50vw;
 	display:none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 1px solid white;
+	border-radius: 25px;
+	background-color: #668cff;
+}
+
+.ordenar{
+	margin: 0 auto;
+	width: 25vw;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 10px;
@@ -77,4 +92,45 @@ body{
 	margin: 0 auto;
 	text-align: center;
 	border:1px solid black;
+}
+
+.alertaC{
+	margin: 0 auto;
+	width: 50vw;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+blockquote{
+	margin: 0 auto;
+}
+
+.comentario{
+	border:1px solid white;
+	padding: 10px;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+
+.volver{
+	padding: 20px;
+	cursor:pointer;
+	border-radius: 50px;
+	position: fixed;
+	bottom: 20px;
+	left: 5px;
+	z-index: 100;
+}
+
+.nav-tabs>li>a{
+	border:1px solid white;
+	background-color:rgb(179, 198, 255);
+}
+
+.control-panel{
+	border:2px solid black;
+	border-radius: 10px;
+	margin: 5px;
+	padding: 5px;
 }

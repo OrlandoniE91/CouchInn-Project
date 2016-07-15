@@ -11,7 +11,7 @@
 		}
 		?>
 
-		<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
@@ -20,22 +20,22 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.php">CouchInn</a>
+					<a class="navbar-brand" href="index.php"><strong>CouchInn</strong></a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="navbar1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#acercaDe" data-toggle="modal">Acerca De</a></li>
+						<li><a href="#acercaDe" data-toggle="modal"><strong>Acerca De</strong></a></li>
 						<?php if(!isset($_SESSION['estado'])){ ?>
-							<li><a href="#login" data-toggle="modal">Iniciar Sesión</a></li>
-							<li><a href="registrarse.php">Registrarse</a></li>
+							<li><a href="#login" data-toggle="modal"><strong>Iniciar Sesión</strong></a></li>
+							<li><a href="registrarse.php"><strong>Registrarse</strong></a></li>
 							<?php  } else { 
 								if ($premium == 0){?>
-								<li><a type="button" class="btn btn-danger" href="premiumForm.php" style="color:white">¡Hazte Premium!</a></li>
+								<li><a type="button" class="btn btn-danger" href="premiumForm.php" style="color:white"><strong>¡Hazte Premium!</strong></a></li>
 								<?php } ?>
-								<li><a type="button" class="btn btn-primary" href="altaHospedaje.php" style="color:white">¡Publica!</a></li>
-								<li><a href="perfil.php">Mi perfil: <?php echo $_SESSION['usuario'] ?></a></li>
-								<li><a href="logOff.php" onclick="return confirm('¿Salir?')">Cerrar Sesión</a></li>
+								<li><a type="button" class="btn btn-primary" href="altaHospedaje.php" style="color:white"><strong>¡Publica!</strong></a></li>
+								<li><a href="perfil.php"><strong>Mi perfil: <?php echo $_SESSION['usuario'] ?></strong></a></li>
+								<li><a href="logOff.php" onclick="return confirm('¿Salir?')"><strong>Cerrar Sesión</strong></a></li>
 								<?php } ?>		
 							</ul>
 						</div>

@@ -18,46 +18,51 @@
 		if (isset($_SESSION['estado'])){
 			$idUs = $_SESSION['id'];
 			$calificaciones = mysqli_query($conexion, "SELECT * FROM calificacion WHERE idCalifica = '$idUs' AND estado = 'pendiente' ");
-			if(mysqli_num_rows($calificaciones) != 0){ ?>
-				<div>
-					<h3>¡Tienes calificaciones pendientes!</h3>
-				</div>	
+			if(mysqli_num_rows($calificaciones) != 0){ ?>			
+			<div id="mensaje" class="bg-primary alertaC">
+				<h3>¡Tienes calificaciones pendientes! Ingresa a tu perfil para calificar. <br><button id="ocultar" class="btn btn-sm btn-warning">En otro momento</button></h3>
+
+			</div>
 			<?php } 
 		} ?>
 		<button id="buscar" role="button" class="btn btn-primary">Buscar</button>
+		
 		<div class="filtro">
 			<form class="form-horizontal" method="post" action="filtro.php">
 				<div class="form-group">
-					<label for="titulo" class="control-label col-md-2">Titulo</label>
-					<div class="col-md-5">
+					<h3 class="col-md-7 col-md-offset-3">Buscar por uno o más criterios.</h3>
+				</div>
+				<div class="form-group">
+					<label for="titulo" class="control-label col-md-3">Titulo</label>
+					<div class="col-md-7">
 						<input type="text" class="form-control" name="titulo" id="titulo">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="ciudad" class="control-label col-md-2">Ciudad</label>
-					<div class="col-md-5">
+					<label for="ciudad" class="control-label col-md-3">Ciudad</label>
+					<div class="col-md-7">
 						<input type="text" class="form-control" name="ciudad" id="ciudad">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="capacidad" class="control-label col-md-2">Capacidad</label>
-					<div class="col-md-5">
+					<label for="capacidad" class="control-label col-md-3">Capacidad</label>
+					<div class="col-md-7">
 						<input type="number" class="form-control" name="capacidad" id="capacidad">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="descripcion" class="control-label col-md-2">Descripcion</label>
-					<div class="col-md-5">
+					<label for="descripcion" class="control-label col-md-3">Descripcion</label>
+					<div class="col-md-7">
 						<input type="text" class="form-control" name="descripcion" id="descripcion">
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="thospedaje" class="control-label col-md-2">Tipo Hospedaje</label>
-					<div class="col-md-5">
+					<label for="thospedaje" class="control-label col-md-3">Tipo Hospedaje</label>
+					<div class="col-md-7">
 						<select class="form-control" name="thospedaje" id="thospedaje">
 							<?php
 							$registros=mysqli_query($conexion,"SELECT * FROM tipohospedaje WHERE enUso = 1")
@@ -72,13 +77,33 @@
 					</div>
 				</div>
 
+				<hr>
+
 				<div class="form-group">
-					<div class="col-md-2 col-md-offset-2">
-						<button type="submit" class="btn btn-primary" name="aceptar" >Buscar</button>
-						<a href="index.php" class="btn btn-warning" role="button">Volver</a>
+					<h3 class="col-md-7 col-md-offset-3">Disponibilidad de los hospedajes.</h3>
+				</div>
+
+				<div class="form-group">
+					<label for="inicio" class="control-label col-md-3">Fecha de inicio</label>
+					<div class="col-md-7">
+						<input type="date" class="form-control" name="fechaInicio" min="<?php echo date('Y-m-d') ?>" id="inicio">
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="fin" class="control-label col-md-3">Fecha de fin</label>
+					<div class="col-md-7">
+						<input type="date" class="form-control" name="fechaFin" min="<?php echo date('Y-m-d') ?>" id="fin">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-1 col-md-offset-5">
+						<button type="submit" class="btn btn-primary" name="aceptar" onClick="return validarFecha();" >Buscar</button>
+					</div>
+				</div>
+				<div id="errors" class="alert alert-danger" hidden></div>
 			</form>
+			
 		</div>
 		<?php include("loginModal.php");
 		
@@ -125,7 +150,8 @@
 						<img src="img/logo.png" alt="Logo">
 						<?php } ?>
 						<h3><?php echo $filasH[1]; ?></h3>
-						<?php echo $filasU[3] ?> <?php echo $filasU[4]; ?></p>
+						<p><?php echo $filasU[3] ?> <?php echo $filasU[4]; ?></p>
+						<p>Valoración: <?php echo $filasH['calificacion']; ?></p>
 						<a type="button" class="btn btn-sm btn-primary" href="post.php?id=<?php echo $filasH[0] ?>" style="margin-bottom:5px;" >Ver detalles</a>
 					</div>
 				</div>
@@ -154,12 +180,17 @@
 		</footer>
 		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vdatos.js"></script>
 		<script>
-			$(document).ready(function(){
-			    $("#buscar").click(function(){
-			        $(".filtro").slideToggle();
-			    });
+		$(document).ready(function(){
+			$("#buscar").click(function(){
+				$(".filtro").slideToggle();
 			});
+
+			$("#ocultar").click(function(){
+				$(".alertaC").hide();
+			});
+		});
 		</script>
 	</body>
 	</html>
