@@ -21,16 +21,22 @@
 		<div class="container">
 		<form class="form-horizontal" method="post" action="consAltaHospedaje.php" enctype="multipart/form-data">
 		        <input type="hidden" value="<?php echo $_SESSION["usuario"];?>" name="id"/>
-				<div class="form-group">
+				
 					<?php
-				    $link=conectardb();
-				    echo'<select name="seleccionado">'; 
-				    $tipos=mysqli_query($link,"SELECT * FROM tipoHospedaje WHERE enUso = 1");
-                    while($lista=mysqli_fetch_array($tipos)){
-                      echo "<option  value='".$lista[0]."'>$lista[1]</option>"; 
-				    }
-                
-                    echo'</select>';   ?>       
+				    $link=conectardb(); ?>
+                   <div class="form-group">
+					<label for="tHospedaje" class="control-label col-md-2">Tipo Hospedaje</label>
+					<div class="col-md-5">
+						<select class="form-control" name="tHospedaje" id="tHospedaje" required>
+							<?php
+							$registros=mysqli_query($link,"SELECT * FROM tipohospedaje WHERE enUso = 1")
+							or die("Problemas en el select:".mysqli_error($link)); ?>
+							<option value="">Seleccione un tipo</option>
+							<?php while ($reg=mysqli_fetch_array($registros)){ ?>
+								<option value="<?php echo $reg[0]; ?>"> <?php echo $reg[1]; ?></option>
+							<?php } ?>
+						</select>
+					</div>
 				    <a class="btn btn-primary" href="formAgregarTipo.php">Agregar tipo</a>
 				</div>
 				<div class="form-group">
@@ -62,7 +68,7 @@
 				<div class="form-group">
 					<label for="calle" class="control-label col-md-2">Fotos</label>
 					<div class="col-md-5">
-						<input type="file"  name="fotos[]" id="fotos" placeholder="Fotos"   multiple="true">
+						<input class="form-control" type="file"  name="fotos[]" id="fotos" placeholder="Fotos"   multiple="true">
 					</div>
 				</div>
 

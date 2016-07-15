@@ -11,30 +11,22 @@ if(isset($_SESSION)){
 
 //bloque para crear calificaciones de inquilinos.
 $consulta=mysqli_query($link,"SELECT * FROM solicitud WHERE usuario = '$mail' AND fin < '$fechaActual' AND estado = 'Aceptada' AND ci = 0");
-if(mysqli_num_rows($consulta) != 0){
-	
+if(mysqli_num_rows($consulta) != 0){	
 	while($res=mysqli_fetch_array($consulta)){
 		$id=$res['id'];
-		mysqli_query($link,"UPDATE solicitud SET ci = 1
-				WHERE  id = '$id'");
+		mysqli_query($link,"UPDATE solicitud SET ci = 1	WHERE  id = '$id'");
 		$idHospedaje=$res['idHospedaje'];
 		$hospedaje=mysqli_query($link,"SELECT idUsuario FROM hospedaje WHERE id ='$idHospedaje'");
 		$idDueño=mysqli_fetch_array($hospedaje);
 		$idD=$idDueño['idUsuario'];
-		mysqli_query($link,"INSERT INTO calificacion (idCalifica, estado, idCalificado) VALUES ('$idUsuario' , 'pendiente', '$idD' )");
-	
+		mysqli_query($link,"INSERT INTO calificacion (idCalifica, estado, idCalificado, idHospedaje) VALUES ('$idUsuario' , 'pendiente', '$idD', '$idHospedaje' )");	
+	}
 }
-
-}
-
-
-
-
 //bloque para crear calificaciones de dueños.
 $consulta2=mysqli_query($link, "SELECT * FROM  hospedaje WHERE idUsuario='$idUsuario'");
 while($hospedaje=mysqli_fetch_array($consulta2)){
-      $idhospedaje=$hospedaje['id'];
-      $sol=mysqli_query($link,"SELECT * FROM solicitud WHERE idHospedaje='$idhospedaje'  AND fin < '$fechaActual' AND estado = 'Aceptada' AND cd = 0");
+      $idHospedaje=$hospedaje['id'];
+      $sol=mysqli_query($link,"SELECT * FROM solicitud WHERE idHospedaje='$idHospedaje'  AND fin < '$fechaActual' AND estado = 'Aceptada' AND cd = 0");
       while($arrayS=mysqli_fetch_array($sol)){
 	         $id=$arrayS['id'];
 	         mysqli_query($link,"UPDATE solicitud SET  cd = 1 WHERE  id = '$id'");
@@ -42,7 +34,7 @@ while($hospedaje=mysqli_fetch_array($consulta2)){
 			$query2=mysqli_query($link,"SELECT id FROM usuario WHERE mail = '$usuario'");
 			$inquilino=mysqli_fetch_array($query2);
 			$idInquilino=$inquilino['id'];
-			mysqli_query($link,"INSERT INTO calificacion (idCalifica, idCalificado, estado) VALUES ('$idUsuario', '$idInquilino', 'pendiente')");
+			mysqli_query($link,"INSERT INTO calificacion (idCalifica, idCalificado, estado, idHospedaje) VALUES ('$idUsuario', '$idInquilino', 'pendiente', '$idHospedaje')");
 		}
 	  }
 } 
